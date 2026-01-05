@@ -1,10 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import { getSortedPosts } from '../utils/posts';
 
-const posts = (await getCollection('posts')).sort(
-	(a, b) => b.data.postDate.getTime() - a.data.postDate.getTime()
-);
+const posts = await getSortedPosts();
 ---
 
 <Layout title="Earl's Place | Home">
@@ -14,15 +12,15 @@ const posts = (await getCollection('posts')).sort(
         <p>These reports are to provide myself, family and friends memories of good times and also to aid in the recall of details we may have forgotten so they can be referenced for future trips.</p>
 
         <p>
-            <a href="https://sites.google.com/site/earlatnipsplace/earl-atnips-place/river-outfitters">River Outfitters</a>
+            <a href="/posts/river-outfitters">River Outfitters</a>
             <a href="https://sites.google.com/site/earlatnipsplace/river-gages">River Gages</a>
             <a href="http://www.ozarkpages.com/cgi-bin/stages.pl?ST=level">Ozark Creek Summary</a>
         </p>
 
         <p>
-            <a href="https://share.delorme.com/EarlAtnip">Where is Earl?</a>
-            <a href="https://sites.google.com/site/earlatnipsplace/earl-atnips-place/bucket-list">Earl's Bucket List</a>
-            <a href="https://sites.google.com/site/earlatnipsplace/earl-atnips-place/special-photos">Special Photos</a>
+            <a href="https://share.garmin.com/EarlAtnip">Where is Earl?</a>
+            <a href="/posts/earls-bucket-list">Earl's Bucket List</a>
+            <a href="/posts/special-photos">Special Photos</a>
         </p>
     </section>
 

@@ -1,15 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
 import FileTree from '../components/FileTree.astro';
+import { getSortedPosts } from '../utils/posts';
 
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
-const allPosts = await getCollection('posts');
-
-allPosts.sort((a, b) => b.data.postDate.getTime() - a.data.postDate.getTime());
+const allPosts = await getSortedPosts();
 
 const currentPath = Astro.url.pathname;
 ---
