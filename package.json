@@ -1,12 +1,12 @@
 {
-  "name": "",
+  "name": "earl-atnips-place",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "bun run astro dev",
+    "build": "bun run astro build",
+    "preview": "bun run astro preview",
+    "deploy": "bun run build && git add --all && git commit -m \"Site build and deploy\" && git push"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
