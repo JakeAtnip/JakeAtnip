@@ -9,23 +9,7 @@ interface Props {
 const { title } = Astro.props;
 const allPosts = await getCollection('posts');
 
-const fileTree = {};
-
-for (const post of allPosts) {
-    const parts = post.slug.split('/');
-    let currentLevel = fileTree;
-    for (let i = 0; i < parts.length - 1; i++) {
-        const part = parts[i];
-        if (!currentLevel[part]) {
-            currentLevel[part] = {};
-        }
-        currentLevel = currentLevel[part];
-    }
-    if (!currentLevel.__files__) {
-        currentLevel.__files__ = [];
-    }
-    currentLevel.__files__.push(post);
-}
+allPosts.sort((a, b) => b.data.postDate.getTime() - a.data.postDate.getTime());
 
 const currentPath = Astro.url.pathname;
 ---
@@ -46,7 +30,7 @@ const currentPath = Astro.url.pathname;
 				<aside class="sidebar">
 					<nav>
                         <h3><a href="/">Earl Atnip's Place</a></h3>
-						<FileTree tree={fileTree} currentPath={currentPath} />
+						<FileTree allPosts={allPosts} currentPath={currentPath} />
 					</nav>
 				</aside>
 				<main>

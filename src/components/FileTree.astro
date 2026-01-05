@@ -2,41 +2,20 @@
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-    tree: Record<string, any>;
+    allPosts: CollectionEntry<'posts'>[];
     currentPath: string;
-    level?: number;
 }
 
-const { tree, currentPath, level = 0 } = Astro.props;
-
-const entries = Object.entries(tree);
-const files: CollectionEntry<'posts'>[] = entries.find(([name]) => name === '__files__')?.[1] || [];
-const directories = entries.filter(([name]) => name !== '__files__');
-
-directories.sort(([a], [b]) => a.localeCompare(b));
-files.sort((a, b) => {
-    const aName = a.slug.split('/').pop() ?? '';
-    const bName = b.slug.split('/').pop() ?? '';
-    return aName.localeCompare(bName);
-});
+const { allPosts, currentPath } = Astro.props;
 ---
-<ul style="list-style: none; padding-left: 0;">
-    {directories.map(([name, node]) => {
-        return (
-            <li style={`padding-left: ${level * 10}px;`}>
-                <span style="font-weight: bold;">{name}</span>
-                <Astro.self tree={node} currentPath={currentPath} level={level + 1} />
-            </li>
-        );
-    })}
-    {files.map(post => {
+<ul>
+    {allPosts.map(post => {
         const postUrl = `/posts/${post.slug}/`;
         const isActive = postUrl === currentPath;
-        const fileName = post.slug.split('/').pop();
         return (
-            <li style={`padding-left: ${level * 10}px;`}>
+            <li>
                 <a href={postUrl} class:list={{ "is-active": isActive }}>
-                    {post.data.title || fileName}
+                    {post.data.title}
                 </a>
             </li>
         );
