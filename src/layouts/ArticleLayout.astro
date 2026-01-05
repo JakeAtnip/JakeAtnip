@@ -4,38 +4,22 @@ import Layout from './Layout.astro';
 const { frontmatter } = Astro.props;
 ---
 <Layout title={frontmatter.title}>
-<h1>ARTICLE LAYOUT</h1>
-  <article>
-    <h2>{frontmatter.title}</h2>
-    <div class="content">
-      <slot />
-    </div>
-  </article>
+  <h2>{frontmatter.title}</h2>
+  <div class="content">
+    <slot />
+  </div>
 </Layout>
 
 <style>
-	article {
-		padding: 1rem 0;
-	}
 	h2 {
-		font-size: 2.25rem;
-		line-height: 1.2;
-		margin-bottom: 0.5rem;
-		color: var(--accent-maroon);
-	}
-	.pub-date {
-		color: #888;
-		margin-bottom: 2rem;
-		font-style: italic;
+		font-size: 2rem;
+		margin-bottom: 1rem;
 	}
     .content {
-        line-height: 1.7;
-        font-size: 1.1rem;
+        line-height: 1.6;
     }
     .content :global(img) {
         max-width: 100%;
         height: auto;
-        border-radius: 8px;
-        margin: 1rem 0;
     }
 </style>

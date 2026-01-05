@@ -4,9 +4,10 @@ import type { CollectionEntry } from 'astro:content';
 interface Props {
     tree: Record<string, any>;
     currentPath: string;
+    level?: number;
 }
 
-const { tree, currentPath } = Astro.props;
+const { tree, currentPath, level = 0 } = Astro.props;
 
 const entries = Object.entries(tree);
 const files: CollectionEntry<'posts'>[] = entries.find(([name]) => name === '__files__')?.[1] || [];
@@ -18,33 +19,13 @@ files.sort((a, b) => {
     const bName = b.slug.split('/').pop() ?? '';
     return aName.localeCompare(bName);
 });
-
-
-function isNodeActive(node: Record<string, any>, currentPath: string): boolean {
-    if (node.__files__) {
-        if (node.__files__.some((p: CollectionEntry<'posts'>) => `/posts/${p.slug}/` === currentPath)) {
-            return true;
-        }
-    }
-    for (const key in node) {
-        if (key !== '__files__') {
-            if (isNodeActive(node[key], currentPath)) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
 ---
-<ul>
+<ul style="list-style: none; padding-left: 0;">
     {directories.map(([name, node]) => {
-        const isActive = isNodeActive(node, currentPath);
         return (
-            <li>
-                <details open={isActive}>
-                    <summary>{name}</summary>
-                    <Astro.self tree={node} currentPath={currentPath} />
-                </details>
+            <li style={`padding-left: ${level * 10}px;`}>
+                <span style="font-weight: bold;">{name}</span>
+                <Astro.self tree={node} currentPath={currentPath} level={level + 1} />
             </li>
         );
     })}
@@ -53,7 +34,7 @@ function isNodeActive(node: Record<string, any>, currentPath: string): boolean {
         const isActive = postUrl === currentPath;
         const fileName = post.slug.split('/').pop();
         return (
-            <li>
+            <li style={`padding-left: ${level * 10}px;`}>
                 <a href={postUrl} class:list={{ "is-active": isActive }}>
                     {post.data.title || fileName}
                 </a>
