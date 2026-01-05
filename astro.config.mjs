@@ -6,7 +6,7 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   integrations: [mdx()],
-  site: 'https://jakeatnip.github.io',
+  site: 'https://jakeatnip.github.io/JakeAtnip/',
   base: '/JakeAtnip/',
   outDir: './docs',
 });
