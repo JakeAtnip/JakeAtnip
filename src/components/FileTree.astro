@@ -8,6 +8,7 @@ interface Props {
 
 const { allPosts, currentPath } = Astro.props;
 ---
+<h3>Posts</h3>
 <ul>
     {allPosts.map(post => {
         const postUrl = import.meta.env.BASE_URL + `posts/${post.slug}/`;
