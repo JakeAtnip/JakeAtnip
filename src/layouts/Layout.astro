@@ -35,11 +35,9 @@ const currentPath = Astro.url.pathname;
 				</aside>
 				<main>
 					<slot />
+                    <p>&copy; {new Date().getFullYear()} Earl Atnip's Place. All rights reserved.</p>
 				</main>
 			</div>
-			<footer>
-				<p>&copy; {new Date().getFullYear()} Earl Atnip's Place. All rights reserved.</p>
-			</footer>
 		</div>
 	</body>
 </html>
