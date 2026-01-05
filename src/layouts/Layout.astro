@@ -45,108 +45,164 @@ const currentPath = Astro.url.pathname;
 </html>
 
 <style is:global>
+	/*
+	  This section contains the basic styling for the entire webpage.
+	  Think of it as setting the default look and feel for everything.
+	*/
 	body {
-		font-family: sans-serif;
-		background-color: #f0f0f0;
-		color: #333;
-		margin: 0;
-		padding: 0;
+		font-family: sans-serif; /* Sets the default font to a clean, simple style */
+		background-color: #f0f0f0; /* The very light gray background color for the entire page outside the main content */
+		color: #333; /* The default text color for most of the page */
+		margin: 0; /* Removes any default spacing around the edge of the page */
+		padding: 0; /* Removes any default inner spacing from the edge of the page */
 	}
 
+    /*
+      This styles the top bar of the website, which contains the site title.
+    */
     header {
-        background-color: #660033; /* Changed to #660033 */
-        padding: 1rem 2rem;
-        text-align: center;
+        background-color: #660033; /* The dark purple/burgundy background color for the header bar */
+        padding: 1rem 2rem; /* Adds space inside the header, above/below and left/right of the title */
+        text-align: center; /* Centers the text (site title) within the header */
     }
 
+    /*
+      This styles the main title of the website within the header.
+    */
     header h1 {
-        margin: 0;
-        font-size: 1.5rem;
+        margin: 0; /* Removes any default spacing around the title */
+        font-size: 1.5rem; /* Sets the size of the site title text */
     }
 
+    /*
+      This styles the link within the main title, making it white and removing the underline.
+    */
     header h1 a {
-        color: white;
-        text-decoration: none;
+        color: white; /* Makes the site title text white */
+        text-decoration: none; /* Removes the underline from the site title link */
     }
 
+	/*
+	  This is the main container that holds all the visible parts of your page.
+	  It's set up to stretch to fill the entire screen height.
+	*/
 	.page-container {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
+		display: flex; /* Arranges items in a row or column */
+		flex-direction: column; /* Stacks items vertically */
+		min-height: 100vh; /* Ensures the container is at least the full height of the screen */
 	}
 
+	/*
+	  This sets up the main layout of your page, dividing it into a sidebar and the main content area.
+	*/
 	.main-content-grid {
-		display: grid;
-		grid-template-columns: 240px 1fr;
-		flex-grow: 1;
+		display: grid; /* Uses a grid system for layout */
+		grid-template-columns: 240px 1fr; /* Creates two columns: one fixed-width (240px) for the sidebar, and one that takes up the remaining space (1fr) for the main content */
+		flex-grow: 1; /* Allows this section to expand and fill available vertical space */
 	}
 
+	/*
+	  This styles the main area where your blog posts and other content will appear.
+	*/
 	main {
-		background-color: #F0EAD6; /* Changed to #F0EAD6 */
-		padding: 2rem;
-        display: flex; /* Added flexbox */
-        flex-direction: column; /* Added flex direction */
-        /* Removed justify-content: space-between; */
+		background-color: #F0EAD6; /* The light tan background color for the main content area */
+		padding: 2rem; /* Adds space inside the main content area, around your posts */
+        display: flex; /* Arranges items in a row or column */
+        flex-direction: column; /* Stacks items vertically */
+        /* We removed 'justify-content: space-between;' here to keep content at the top */
 	}
 
+    /*
+      This helps the actual content (your blog posts, etc.) within the 'main' area to take up all available space.
+    */
     .main-content {
-        flex-grow: 1; /* Allows content to take up available space */
+        flex-grow: 1; /* Allows this content area to expand and fill available vertical space */
     }
 
+    /*
+      This styles the copyright notice at the bottom of the main content area.
+    */
     .copyright {
-        margin-top: auto; /* Pushes copyright to the bottom */
-        text-align: center;
-        font-size: 0.9rem;
-        color: #888;
+        margin-top: auto; /* This is the magic! It pushes the copyright notice to the very bottom of the 'main' area */
+        text-align: center; /* Centers the copyright text */
+        font-size: 0.9rem; /* Makes the copyright text a bit smaller */
+        color: #888; /* Sets the color of the copyright text to a light gray */
     }
 
+	/*
+	  This styles the sidebar, which contains the list of your posts.
+	*/
 	.sidebar {
-		background-color: #333; /* Changed to match header */
-		padding: 1.5rem;
-        color: white; /* Changed to white */
+		background-color: #333; /* The dark gray background color for the sidebar, matching the header */
+		padding: 1.5rem; /* Adds space inside the sidebar, around the post list */
+        color: white; /* Sets the default text color within the sidebar to white */
 	}
 
+	/*
+	  This styles the navigation area within the sidebar.
+	*/
 	.sidebar nav h3 {
-		margin: 0 0 1rem 0;
-		font-size: 1.2rem;
+		margin: 0 0 1rem 0; /* Adds space below the "Posts" title in the sidebar */
+		font-size: 1.2rem; /* Sets the size of the "Posts" title */
 	}
 
+	/*
+	  This removes the default bullet points from the main list of posts in the sidebar.
+	*/
 	.sidebar nav > ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
+		list-style: none; /* Removes bullet points */
+		padding: 0; /* Removes default inner spacing */
+		margin: 0; /* Removes default outer spacing */
 	}
 
+	/*
+	  This styles each individual link (post title) in the sidebar.
+	*/
 	.sidebar nav ul li a {
-		display: block;
-		padding: 0.3rem 0.5rem;
-		text-decoration: none;
-		color: white; /* Changed to white */
-		border-radius: 4px;
+		display: block; /* Makes the entire area of the link clickable */
+		padding: 0.3rem 0.5rem; /* Adds space inside each link */
+		text-decoration: none; /* Removes the underline from the links */
+		color: white; /* Sets the color of the links to white */
+		border-radius: 4px; /* Slightly rounds the corners of the link background */
 	}
 
+	/*
+	  This changes the background color of a link when you hover your mouse over it.
+	*/
 	.sidebar nav ul li a:hover {
-		background-color: #555; /* Lighter shade for hover */
+		background-color: #555; /* A slightly lighter gray for the hover effect */
 	}
 
+	/*
+	  This styles the link for the post you are currently viewing.
+	*/
 	.sidebar nav ul li a.is-active {
-		background-color: #666; /* Different shade for active */
-		color: white;
-		font-weight: 600;
+		background-color: #666; /* A different shade of gray for the active link */
+		color: white; /* Ensures the text remains white */
+		font-weight: 600; /* Makes the active link text a bit bolder */
 	}
 
+	/*
+	  This sets the default style for all other links on the page (not in the header or sidebar).
+	*/
 	a {
-		color: #333;
-		text-decoration: underline;
+		color: #333; /* Sets the link color to a dark gray */
+		text-decoration: underline; /* Ensures these links have an underline */
 	}
 
+	/*
+	  This sets the default font weight for all heading tags (h1, h2, etc.).
+	*/
 	h1, h2, h3, h4, h5, h6 {
-		font-weight: 600;
+		font-weight: 600; /* Makes all headings bold */
 	}
 
+	/*
+	  This section handles how the layout changes on smaller screens (like phones or tablets).
+	*/
 	@media (max-width: 900px) {
 		.main-content-grid {
-			grid-template-columns: 1fr;
+			grid-template-columns: 1fr; /* On small screens, the sidebar and main content stack vertically, each taking full width */
 		}
 	}
 </style>

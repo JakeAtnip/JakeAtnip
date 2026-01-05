@@ -24,7 +24,8 @@ const posts = await getSortedPosts();
         </p>
     </section>
 
-	<section class="post-list">
+    <section class="post-list">
+        <h2>Posts</h2>
 		<ul>
 			{posts.map((post) => (
 				<li class="post-item">
@@ -39,59 +40,65 @@ const posts = await getSortedPosts();
 </Layout>
 
 <style>
+    /*
+      This styles the introductory text section at the top of your homepage.
+    */
     .intro-text {
-        margin-bottom: 2rem;
+        margin-bottom: 2rem; /* Adds space below this section */
     }
     .intro-text p {
-        margin-bottom: 1rem;
-        line-height: 1.6;
+        margin-bottom: 1rem; /* Adds space below each paragraph in this section */
+        line-height: 1.6; /* Sets the spacing between lines of text */
     }
     .intro-text a {
-        margin-right: 1rem;
-        text-decoration: none;
-        color: #007bff; /* A default link color */
+        margin-right: 1rem; /* Adds space to the right of each link */
+        text-decoration: none; /* Removes the underline from these links */
+        color: #007bff; /* Sets a default blue color for these links */
     }
     .intro-text a:hover {
-        text-decoration: underline;
+        text-decoration: underline; /* Adds an underline when you hover over these links */
     }
 
+	/*
+	  This styles the main list of blog posts on your homepage.
+	*/
 	.post-list h2 {
-		font-size: 1.5rem;
-		font-weight: 500;
-		margin-bottom: 2rem;
-		text-align: center;
-		color: #666;
+		font-size: 1.5rem; /* Sets the size of the section title (if any) */
+		font-weight: 500; /* Sets the boldness of the section title */
+		margin-bottom: 2rem; /* Adds space below the section title */
+		text-align: center; /* Centers the section title */
+		color: #666; /* Sets the color of the section title */
 	}
 	.post-list ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
+		list-style: none; /* Removes bullet points from the list */
+		padding: 0; /* Removes default inner spacing */
+		margin: 0; /* Removes default outer spacing */
 	}
 	.post-item {
-		margin-bottom: 2rem;
-		border-bottom: 1px solid var(--border-light);
-		padding-bottom: 2rem;
+		margin-bottom: 2rem; /* Adds space below each post in the list */
+		border-bottom: 1px solid var(--border-light); /* Adds a thin line below each post to separate them */
+		padding-bottom: 2rem; /* Adds space between the post content and the separating line */
 	}
 	.post-item:last-child {
-		border-bottom: none;
-		margin-bottom: 0;
+		border-bottom: none; /* Removes the line under the very last post */
+		margin-bottom: 0; /* Removes extra space below the very last post */
 	}
 	.post-title {
-		text-decoration: none;
+		text-decoration: none; /* Removes the underline from the post title links */
 	}
 	.post-title h3 {
-		color: var(--accent-maroon);
-		margin: 0 0 0.5rem 0;
-		font-size: 1.4rem;
-		font-weight: 600;
-		transition: color 0.2s ease-in-out;
+		color: var(--accent-maroon); /* Sets the color of the post title */
+		margin: 0 0 0.5rem 0; /* Adds space below the post title */
+		font-size: 1.4rem; /* Sets the size of the post title text */
+		font-weight: 600; /* Makes the post title text bold */
+		transition: color 0.2s ease-in-out; /* Makes the color change smooth when hovering */
 	}
 	.post-title:hover h3 {
-		color: #000;
+		color: #000; /* Changes the post title color to black when hovering */
 	}
 	.post-description {
-		margin: 0;
-		line-height: 1.6;
-		color: #555;
+		margin: 0; /* Removes default spacing */
+		line-height: 1.6; /* Sets the spacing between lines of text */
+		color: #555; /* Sets the color of the post description text */
 	}
 </style>
