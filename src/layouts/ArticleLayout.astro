@@ -11,14 +11,14 @@ const { frontmatter } = Astro.props;
 
 <style>
 	h2 {
-		font-size: 2rem;
-		margin-bottom: 1rem;
+		font-size: 2rem; /* Sets the font size of the h2 elements to 2rem */
+		margin-bottom: 1rem; /* Adds a margin of 1rem to the bottom of the h2 elements */
 	}
     .content {
-        line-height: 1.6;
+        line-height: 1.6; /* Sets the line height of the content to 1.6 */
     }
     .content :global(img) {
-        max-width: 100%;
-        height: auto;
+        max-width: 100%; /* Ensures images don't exceed the width of their container */
+        height: auto; /* Maintains the aspect ratio of the images */
     }
 </style>
